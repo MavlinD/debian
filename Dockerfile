@@ -17,11 +17,12 @@ RUN apt update && apt install -y curl tzdata nginx systemctl gettext-base sudo a
 && mkdir $APP_HOME/commandhistory \
 && chown -R $USERNAME:$USERNAME $APP_HOME/commandhistory \
 && usermod -aG docker ${USERNAME} \
-&& apt-get install bsdmainutils -y \
+&& apt install bsdmainutils cron -y \
 && apt install gawk
+
+COPY ./entrypoint.sh /
 
 WORKDIR $APP_HOME
 
 USER $USERNAME
 
-#CMD ["cron", "-f"]

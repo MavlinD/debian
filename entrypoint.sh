@@ -9,7 +9,7 @@ echo -e "$yellow-- cron startup !!! --$nc" > ~/test.txt
 # sudo systemctl start cron
 # sudo systemctl start cron
 # which cron
-# sudo /usr/sbin/cron -f
+sudo /usr/sbin/cron -f
 # /usr/sbin/crond -l=0 -d=8 -f
 # загрузить таблицу задач из файла
 # crontab crontab
