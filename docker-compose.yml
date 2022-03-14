@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  deb:
+    build: .
+    container_name: debian
+#    network_mode: "none"
+    hostname: debian
+    init: true
+    tty: true
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+#      - debian-bashhistory:/commandhistory
+      - debian-bashhistory:/home/appuser/commandhistory
+#      - ~/.bashrc:/home/appuser/.bashrc
+      - ~/:/home/appuser
+      - /usr/share/bash-completion/completions/git:/usr/share/bash-completion/completions/git
+      - /usr/local/bin/virtualenvwrapper.sh:/usr/local/bin/virtualenvwrapper.sh
+
+#    env_file:
+#      - .env
+
+volumes:
+  debian-bashhistory: # нужен только для отладки

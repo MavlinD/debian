@@ -1,0 +1,13 @@
+#SHELL=/bin/sh
+#HOME=/home/appuser/
+# cat var/spool/cron/crontabs/root - see this file
+
+* * * * * echo -e "$redПривет из крона !!! $nc"
+@reboot echo "Hello!">/proc/1/fd/1 2>/proc/1/fd/2
+* * * * * echo "Hello!"
+* * * * * echo -e "$redПривет из крона !!! $nc"
+@reboot echo -e "$redПривет из крона !!! $nc" >/proc/1/fd/1 2>/proc/1/fd/2
+
+@reboot echo -e $cyan"$(date) Cron starting."$nc
+
+# An empty line is required at the end of this file for a valid cron file.
