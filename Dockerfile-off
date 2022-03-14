@@ -1,8 +1,8 @@
 #FROM docker:git
 #FROM docker:20.10.13
 #FROM python:3.9.10
-#FROM nginx
-FROM debian:11.2
+FROM debian:latest
+#FROM debian:11.2
 
 ARG USERNAME=appuser
 ENV APP_HOME=/home/$USERNAME
@@ -24,7 +24,7 @@ RUN apt update && apt install -y curl tzdata nginx systemctl gettext-base sudo a
   && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
   && mkdir $APP_HOME/commandhistory \
   && chown -R $USERNAME:$USERNAME $APP_HOME/commandhistory \
-##  && pip3 install virtualenvwrapper \
+#  && pip3 install virtualenvwrapper \
   && usermod -aG docker ${USERNAME}
 
 #    RUN service docker enable \
@@ -53,4 +53,4 @@ RUN apt update && apt install -y curl tzdata nginx systemctl gettext-base sudo a
 WORKDIR $APP_HOME
 #RUN #chown -R $USERNAME:$USERNAME $APP_HOME
 
-USER $USERNAME
+#USER $USERNAME
