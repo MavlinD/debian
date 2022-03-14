@@ -7,7 +7,7 @@ services:
     hostname: debian
     init: true
     tty: true
-    entrypoint: /entrypoint.sh
+    entrypoint: sh -c "/entrypoint.sh"
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -16,8 +16,8 @@ services:
       - /usr/share/bash-completion/completions/git:/usr/share/bash-completion/completions/git
       - /usr/local/bin/virtualenvwrapper.sh:/usr/local/bin/virtualenvwrapper.sh
 
-#    env_file:
-#      - .env
+    env_file:
+      - .env
 
 volumes:
   debian-bashhistory: # нужен только для отладки
